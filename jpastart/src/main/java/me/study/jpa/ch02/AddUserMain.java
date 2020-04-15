@@ -1,4 +1,4 @@
-package me.study.jpa.ch02.reserve;
+package me.study.jpa.ch02;
 
 import java.util.Date;
 
@@ -7,7 +7,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
-import me.study.jpa.ch02.reserve.model.User;
+import me.study.jpa.ch02.model.User;
 
 public class AddUserMain {
 
@@ -17,7 +17,7 @@ public class AddUserMain {
 		EntityTransaction transaction = entityManager.getTransaction();
 		try {
 			transaction.begin();
-			User user = new User("kkk@naver.com", "홍길동", new Date());
+			User user = new User("iloveleaf@naver.com", "송충2", new Date());
 			entityManager.persist(user);
 			transaction.commit();
 		} catch (Exception e) {

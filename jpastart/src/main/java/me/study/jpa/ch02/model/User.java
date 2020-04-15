@@ -1,4 +1,4 @@
-package me.study.jpa.ch02.reserve.model;
+package me.study.jpa.ch02.model;
 
 import java.util.Date;
 
