@@ -1,4 +1,4 @@
-package me.study.jpa.ch02.model;
+package me.study.jpa.ch02.models;
 
 import java.util.Date;
 
@@ -40,6 +40,10 @@ public class User {
 
 	public Date getCreateDate() {
 		return createDate;
+	}
+
+	public void changeName(String newName) {
+		this.name = newName;
 	}
 
 }

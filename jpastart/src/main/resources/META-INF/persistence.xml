@@ -7,7 +7,7 @@
     version="2.1">
 
 	<persistence-unit name="jpastart" transaction-type="RESOURCE_LOCAL">
-		<class>me.study.jpa.ch02.model.User</class>
+		<class>me.study.jpa.ch02.models.User</class>
 		
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
 

@@ -7,7 +7,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
-import me.study.jpa.ch02.model.User;
+import me.study.jpa.ch02.models.User;
 
 public class AddUserMain {
 
