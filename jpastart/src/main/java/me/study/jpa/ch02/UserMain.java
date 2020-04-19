@@ -84,9 +84,16 @@ public class UserMain {
 		if (users.isEmpty()) {
 			System.out.println("사용자가 없습니다.");
 		} else {
-			System.out.println("| 이메일 | 이름 | 생성일자 |");
-			users.forEach(user -> System.out.printf("| %s | %s | %tY-%<tm-%<td |%n", user.getEmail(), user.getName(),
-					user.getCreateDate()));
+			System.out.println("| 이메일 | 이름 | 생성일자 | 수정일자 |");
+			for (User user : users) {
+				String format = "| %s | %s | %tY-%<tm-%<td";
+				if (user.getUpdateDate() != null) {
+					format += " | %tY-%<tm-%<td";
+				}
+				format += " |%n";
+
+				System.out.printf(format, user.getEmail(), user.getName(), user.getCreateDate(), user.getUpdateDate());
+			}
 		}
 	}
 

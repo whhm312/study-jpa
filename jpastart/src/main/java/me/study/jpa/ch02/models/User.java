@@ -21,6 +21,9 @@ public class User {
 	@Column(name = "create_date")
 	private Date createDate;
 
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date update_date;
+
 	protected User() {
 	}
 
@@ -42,8 +45,13 @@ public class User {
 		return createDate;
 	}
 
+	public Date getUpdateDate() {
+		return update_date;
+	}
+
 	public void changeName(String newName) {
 		this.name = newName;
+		this.update_date = new Date();
 	}
 
 }
