@@ -3,8 +3,6 @@ package me.study.jpa.ch02;
 import java.util.Date;
 import java.util.Scanner;
 
-import javax.persistence.EntityManager;
-
 import com.mysql.cj.util.StringUtils;
 
 import me.study.jpa.EMF;
@@ -15,7 +13,6 @@ import me.study.jpa.ch02.service.JoinService;
 public class UserMain {
 	public static void main(String[] args) {
 		EMF.init();
-		EntityManager em = EMF.createEntityManager();
 
 		Scanner scan = new Scanner(System.in);
 		while (true) {
@@ -31,9 +28,7 @@ public class UserMain {
 				System.out.println("가입 할 이름 입력 하세요.");
 				String name = scan.next();
 
-				em.getTransaction().begin();
-				join(em, email, name);
-				em.getTransaction().commit();
+				join(email, name);
 			} else if ("view".equals(userCommand)) {
 			} else if ("list".equals(userCommand)) {
 			} else if ("changename".equals(userCommand)) {
@@ -45,13 +40,12 @@ public class UserMain {
 		}
 		scan.close();
 
-		em.close();
 		EMF.close();
 	}
 
 	private static JoinService joinService = new JoinService();
 
-	private static void join(EntityManager em, String email, String name) {
+	private static void join(String email, String name) {
 		if (StringUtils.isNullOrEmpty(email) || StringUtils.isNullOrEmpty(name)) {
 			System.out.println("join을 하기위한 파라메터 값이 옳바르지 않습니다.");
 			System.out.println("이메일 : " + email);
@@ -60,9 +54,11 @@ public class UserMain {
 		}
 
 		try {
-			joinService.join(em, new User(email, name, new Date()));
+			joinService.join(new User(email, name, new Date()));
 			System.out.println(name + "이 성공적으로 가입 되었습니다.");
 		} catch (DuplicateEmailException e) {
+			System.out.println("이미 같은 이메일을 가진 사용자가 존재합니다.");
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
