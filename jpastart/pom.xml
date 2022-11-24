@@ -6,7 +6,7 @@
   <description>JPA 프로그래밍 입문 write by 최범균</description>
   
   <properties>
-  	<hibernate.version>5.2.6.Final</hibernate.version>
+  	<hibernate.version>5.3.20.Final</hibernate.version>
   </properties>
   
   <dependencies>
